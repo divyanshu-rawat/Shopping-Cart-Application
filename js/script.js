@@ -19,7 +19,7 @@ $( document ).ready(function() {
 						   	  var product_count = obj.length;
 
 
-							  $(".product_count").append('<span style = "color:white;" > Product Count '+ product_count +'</span>');
+							  $(".product_count").append('<span style = "color:white;" > Product Count: '+ product_count +'</span>');
 
 								for(i=0 ;i < obj.length; i++)
 								{
@@ -28,7 +28,7 @@ $( document ).ready(function() {
 								   	  var len = tags_1.length;
 								   	  var tags_2 = tags_1[len - 1];
 
-								   	  
+
 									new_obj.push({
 
 										"name":obj[i]["name"],
@@ -47,7 +47,7 @@ $( document ).ready(function() {
 
 								append_data(new_obj);
 								
-								console.log(JSON.stringify(new_obj,null,4));
+								// console.log(JSON.stringify(new_obj,null,4));
 
 									$("#sort_rating").click(function()
 				     		      	{
@@ -63,8 +63,9 @@ $( document ).ready(function() {
 				     		      	$("#search_btn").on("click", function(){
 									   	search_by_tags(new_obj);
 									});
-									$("#search_btn").on("onkeypress", function(){
-									   	search_by_tags(new_obj);
+
+									$("#search_btn_2").on("click", function(){
+									   	price_range(new_obj);
 									});
 
 
@@ -182,7 +183,7 @@ function sort_price(data)
 
 	}
 
-function search_by_tags(obj)
+   function search_by_tags(obj)
 	{
 	 	var value = $("#search_bar").val();
 	 	var count = 0;
@@ -208,7 +209,33 @@ function search_by_tags(obj)
 			// console.log(JSON.stringify(modified_obj,null,4));
 			append_data(modified_obj);
 
-}
+	}
+
+
+	function price_range(obj){
+
+		var range_1 = $("#range_1").val();
+		var range_2 = $("#range_2").val();
+		console.log(range_2);
+
+		var modified_obj = [];
+
+	 	for(i=0;i<obj.length;i++)
+		{
+				// console.log(obj[i]['price'] >= range_1);
+
+				if(parseFloat(obj[i]['price']) >= range_1 && parseFloat(obj[i]['price']) <= range_2 )
+				{
+					modified_obj.push(obj[i]);
+				}
+
+		}
+
+		// console.log(JSON.stringify(modified_obj,null,4));
+		append_data(modified_obj);
+
+
+	}
 
 	
 		$("#reload_it").on("click", function(){
