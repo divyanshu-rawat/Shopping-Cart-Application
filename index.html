@@ -8,29 +8,49 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<!-- slider_purpose ! -->
+	<!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+<!--  -->
 </head>
-<body>
-		
+<body>		
 		<nav class="navbar navbar-inverse">
 			  <div class="container-fluid">
 			    <div class="navbar-header">
-			      <a class="navbar-brand" id = "reload_it" href="#" >Fusion Style — Fashion is nothing without people!</a>
+			      <a class="navbar-brand" id = "reload_it" href="#" >Fusion Style !</a>
 
 			    </div>
 			    <div class="product_count" >
 			    	
 			    </div>
+
 			    <form class="form-inline pull-right">
 			    	<input class="form-control" type="text" placeholder="Search (by category)" id = "search_bar" autocomplete="">
 			    	<button class="btn btn-outline-success" id = "search_btn" type="button">Search</button>
 			    </form>
-			    <ul class="nav navbar-nav pull-right" >
-			      <li><button type="button" class="btn btn-primary" id="sort_rating">Sort by Rating</button></li> 
-			      <li><button type="button" class="btn btn-primary" id="sort_price">Sort by Price</button></li> 
-			    </ul>
-			    
+			    <div style="display:inline-block;" class="pull-right">
+			   			<label for="range" style="color:white;">Enter Range:</label>
+					    <input  id = "range_1" class="my_class"  id="email">
+					    <span style="color:white;">--</span>
+					    <input  id = "range_2" class="my_class"  id="email">
+  				</div>
   			</div>
 		</nav>
+
+		<div class="row">
+		  <div class="col-sm-6 col-sm-offset-1">
+		    <div class="card card-block">
+			    <ul class="nav navbar-nav" >
+			      	  <li><button type="button" class="btn btn-primary" id="sort_rating">Sort by Rating</button></li> 
+				      <li><button type="button" class="btn btn-primary" id="sort_price">Sort by Price</button></li>
+				</ul>
+		    </div>
+		  </div>
+		</div>
+
 
 			<div class="container  col-lg-12" id="panel-container">
 				

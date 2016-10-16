@@ -28,6 +28,7 @@ $( document ).ready(function() {
 								   	  var len = tags_1.length;
 								   	  var tags_2 = tags_1[len - 1];
 
+								   	  
 									new_obj.push({
 
 										"name":obj[i]["name"],
@@ -46,7 +47,7 @@ $( document ).ready(function() {
 
 								append_data(new_obj);
 								
-								// console.log(JSON.stringify(new_obj,null,4));
+								console.log(JSON.stringify(new_obj,null,4));
 
 									$("#sort_rating").click(function()
 				     		      	{
