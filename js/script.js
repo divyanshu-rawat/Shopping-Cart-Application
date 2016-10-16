@@ -181,6 +181,34 @@ function sort_price(data)
 
 	}
 
+function search_by_tags(obj)
+	{
+	 	var value = $("#search_bar").val();
+	 	var count = 0;
+	 	var store = 0
+	 	var modified_obj = [];
+
+	 	for(i=0;i<obj.length;i++)
+		{
+				if(obj[i]['tags'] == value)
+				{
+					count++;
+					store = i;
+				}
+
+		}
+
+			if(count >= 1)
+			{
+				modified_obj.push(obj[store]);
+			}
+
+
+			// console.log(JSON.stringify(modified_obj,null,4));
+			append_data(modified_obj);
+
+}
+
 	
 		$("#reload_it").on("click", function(){
 
