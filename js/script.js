@@ -65,10 +65,12 @@ $( document ).ready(function() {
 									});
 
 									$("#search_btn_2").on("click", function(){
-									   	price_range(new_obj);
+										var range_1 = $("#range_1").val();
+										var range_2 = $("#range_2").val();
+									   	price_range(new_obj,range_1,range_2);
 									});
 
-
+									slider_get_set(new_obj);
 
 
 									
@@ -162,6 +164,7 @@ function sort_rating(local_data)
 
 		 append_data(byrating);
 
+		 console.log($("#amount").val());
 
 	}
 
@@ -178,7 +181,7 @@ function sort_price(data)
 		});
 		 append_data(byprice);
 
-		 // 
+		
 
 
 	}
@@ -212,12 +215,8 @@ function sort_price(data)
 	}
 
 
-	function price_range(obj){
-
-		var range_1 = $("#range_1").val();
-		var range_2 = $("#range_2").val();
-		console.log(range_2);
-
+	function price_range(obj,range_1,range_2){
+		console.log('i am in !!')
 		var modified_obj = [];
 
 	 	for(i=0;i<obj.length;i++)
@@ -236,19 +235,50 @@ function sort_price(data)
 
 	}
 
- $( function() {
-    $( "#slider-range" ).slider({
-      range: true,
-      min: 0,
-      max: 500,
-      values: [ 75, 300 ],
-      slide: function( event, ui ) {
-        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-      }
-    });
-    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-  } );
+	function slider_get_set(obj) {
+
+		var minimum = parseFloat(obj[0]['price']);
+		var maximum = 0;
+
+		for(i=0;i<obj.length;i++)
+		{
+				if(parseFloat(obj[i]['price']) > maximum)
+				{
+					maximum = parseFloat(obj[i]['price']);
+				}
+				if(parseFloat(obj[i]['price']) < minimum )
+				{
+					minimum = parseFloat(obj[i]['price']);
+				}
+
+		}
+
+		 $( function() {
+
+		    $( "#slider-range" ).slider({
+		      range: true,
+		      max: maximum,
+		      min: minimum,
+		      values: [ minimum, maximum ],
+		      slide: function( event, ui ) {
+		        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+
+		        // console.log(ui.values[ 0 ],ui.values[ 1 ]);
+		        price_range(obj,ui.values[ 0 ],ui.values[ 1 ]);
+
+		      }
+
+		    });
+
+		    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+		      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+
+
+
+		  } );
+	}
+
+
 
 	
 		$("#reload_it").on("click", function(){
