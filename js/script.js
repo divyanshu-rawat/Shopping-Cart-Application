@@ -197,19 +197,10 @@ function sort_price(data)
 		{
 				if(obj[i]['tags'] == value)
 				{
-					count++;
-					store = i;
+					modified_obj.push(obj[i]);
 				}
 
 		}
-
-			if(count >= 1)
-			{
-				modified_obj.push(obj[store]);
-			}
-
-
-			// console.log(JSON.stringify(modified_obj,null,4));
 			append_data(modified_obj);
 
 	}
