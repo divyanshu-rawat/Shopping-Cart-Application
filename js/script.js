@@ -166,6 +166,21 @@ function sort_rating(local_data)
 
 
 
+function sort_price(data)
+	{
+		// $("#panel-container").empty();
+
+		var byprice = data.slice(0);
+		 byprice.sort(function(a,b) {
+		    return a.price - b.price;
+		});
+		 append_data(byprice);
+
+		 // 
+
+
+	}
+
 	
 		$("#reload_it").on("click", function(){
 
