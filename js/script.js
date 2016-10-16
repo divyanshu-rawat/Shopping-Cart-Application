@@ -132,7 +132,7 @@ $( document ).ready(function() {
 	 		get_stars();
     } 
 
-    
+
 function get_stars() {
 
     return $(".stars").each(function() {
@@ -148,6 +148,22 @@ function get_stars() {
         $(this).html(span);
     });
 }
+
+function sort_rating(local_data)
+	{
+		// $("#panel-container").empty();
+
+		var byrating = local_data.slice(0);
+		 byrating.sort(function(a,b) {
+		    return a.rating - b.rating;
+		});
+
+		 append_data(byrating);
+
+
+	}
+
+
 
 
 	
