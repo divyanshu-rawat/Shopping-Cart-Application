@@ -1,8 +1,8 @@
 
-### :satisfied: Mad Street Den Frontend Hiring Challenge :smile: Shopping_cart Application :tshirt: :mans_shoe: :handbag:
+> :satisfied: Mad Street Den Frontend Hiring Challenge :smile: Shopping_cart Application :tshirt: :mans_shoe: :handbag:
 
 
-> Installation Instructions :grey_exclamation:
+### Installation Instructions :grey_exclamation:
 
 * clone or Download the repo. into any fresh temporary folder.
 
