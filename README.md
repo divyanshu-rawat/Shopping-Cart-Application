@@ -1,11 +1,28 @@
-# project_1
 
-Steps to run:
+### :satisfied: Mad Street Den Frontend Hiring Challenge :smile: Shopping_cart Application :tshirt: :mans_shoe: :handbag:
 
-1-Clone repo. to Local Machine.
+> Installation Instructions :grey_exclamation:
 
-2-run index.html
+* clone or Download the repo. into any fresh temporary folder :grey_exclamation:
 
+* cd into that root folder you just cloned locally :grey_exclamation:
+
+* launch index.html enjoy :grey_exclamation:
+
+* I have attached screenshots below depicting various features of web app !
+
+>Front End 
 
 ![alt tag](https://github.com/divyanshu-rawat/project_1/blob/master/screenshots/front_end.png)
 
+> category_sort
+
+![alt tag](https://github.com/divyanshu-rawat/Hacker_Earth_Hackathon_Mad_Den_Street/blob/master/screenshots/category_sort.png)
+
+> range_sort
+
+![alt tag](https://github.com/divyanshu-rawat/Hacker_Earth_Hackathon_Mad_Den_Street/blob/master/screenshots/price_range.png)
+
+>rating_sort
+
+![alt tag](https://github.com/divyanshu-rawat/Hacker_Earth_Hackathon_Mad_Den_Street/blob/master/screenshots/rating_sort.png)
