@@ -12,6 +12,18 @@
 
 * I have attached screenshots below depicting various features of web app !
 
+
+
+### Package Manager Used 
+
+* Bower — A package manager for the web.
+
+### Dependencies
+
+*  "bootstrap": "~3.3.7",  "jquery": "~3.1.1"
+*  "font-awesome": "~4.7.0"  ,  "jquery-ui": "^1.12.1"
+
+
 ### Examples !
 
 
