@@ -1,0 +1,16 @@
+{
+  "name": "mad_street_hiring",
+  "homepage": "https://github.com/divyanshu-rawat/Mad-Street-Den-Frontend-Hiring-Challenge",
+  "authors": [
+    "divyanshu <divyanshu.r46956@gmail.com>"
+  ],
+  "description": "Hiring challenge task A shopping App !",
+  "main": "index.html",
+  "license": "MIT",
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7",
+    "jquery-ui": "^1.12.1"
+  }
+}
