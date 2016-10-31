@@ -1,6 +1,4 @@
-
 > :satisfied: Mad Street Den Frontend Hiring Challenge :smile: Shopping_cart Application :tshirt: :mans_shoe: :handbag:
-
 
 ### Installation Instructions :grey_exclamation:
 
