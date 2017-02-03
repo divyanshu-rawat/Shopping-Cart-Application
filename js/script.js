@@ -2,137 +2,110 @@
 
 $( document ).ready(function() {
     
+    var query_url = "http://hackerearth.0x10.info/api/fashion?type=json&query=list_products";
+	$.ajax(
 
-	var query_url = "http://hackerearth.0x10.info/api/fashion?type=json&query=list_products";
+	{
+    	url: query_url,
+	    dataType: 'json',
+	    success:function(obj)
+	   	 {
+	   	  	var obj=obj['products'];
+	   	  	var new_obj=[];
+	   	  	var count = 0;
+	   	  	var product_count = obj.length;
+			for(i=0 ;i < obj.length; i++)
+			{
+			  var tags_1 = obj[i]["name"].split(" ");
+		   	  var len = tags_1.length;
+		   	  var tags_2 = tags_1[len - 1];
+			  new_obj.push(
+			    {
+					"name":obj[i]["name"],
+					"price":obj[i]["price"],
+					"tags":tags_2,
+					"quantity":obj[i]["quantity"],
+					"category":obj[i]['category'],
+					"rating":obj[i]["rating"],
+					"color":obj[i]["color"],
+					"description":obj[i]["description"],
+					"image":obj[i]["image"],
+					"color":obj[i]["color"],
+				}
+			  )
+		    }
 
-	$.ajax({
-					    url: query_url,
-					    dataType: 'json',
-					    success:function(obj)
-					   	 {
-						   	 // console.log(JSON.stringify(obj["products"],null,4));
+			append_data(new_obj);
+		
+			$("#sort_rating").click(function()
+		      {
+	      		sort_rating(new_obj);
+		      });
 
-						   	  var obj=obj['products'];
-						   	  var new_obj=[];
-						   	  // var tags_obj = {};
-						   	  var count = 0;
-						   	  var product_count = obj.length;
+		    $("#sort_price").click(function()
+		      {
+	      		sort_price(new_obj);
+		      });
 
+	      	$("#search_btn").on("click", function(){
+			   	search_by_tags(new_obj);
+			});
 
-							  $(".product_count").append('<span style = "color:white;" > Product Count: '+ product_count +'</span>');
+			$("#search_btn_2").on("click", function(){
+				var range_1 = $("#range_1").val();
+				var range_2 = $("#range_2").val();
+			   	price_range(new_obj,range_1,range_2);
+			});
 
-								for(i=0 ;i < obj.length; i++)
-								{
+			slider_get_set(new_obj);
+	
+	     },
+            error: function (error) {
+              console.log(error);
+          }
+	});
 
-									  var tags_1 = obj[i]["name"].split(" ");
-								   	  var len = tags_1.length;
-								   	  var tags_2 = tags_1[len - 1];
-
-
-									new_obj.push({
-
-										"name":obj[i]["name"],
-										"price":obj[i]["price"],
-										"tags":tags_2,
-										"quantity":obj[i]["quantity"],
-										"category":obj[i]['category'],
-										"rating":obj[i]["rating"],
-										"color":obj[i]["color"],
-										"description":obj[i]["description"],
-										"image":obj[i]["image"],
-										"color":obj[i]["color"],
-									})
-
-								}
-
-								append_data(new_obj);
-								
-								// console.log(JSON.stringify(new_obj,null,4));
-
-									$("#sort_rating").click(function()
-				     		      	{
-				     		      		sort_rating(new_obj);
-				     		      	})
-				     		      	$("#sort_price").click(function()
-				     		      	{
-				     		      		sort_price(new_obj);
-				     		      	})
-
-
-
-				     		      	$("#search_btn").on("click", function(){
-									   	search_by_tags(new_obj);
-									});
-
-									$("#search_btn_2").on("click", function(){
-										var range_1 = $("#range_1").val();
-										var range_2 = $("#range_2").val();
-									   	price_range(new_obj,range_1,range_2);
-									});
-
-									slider_get_set(new_obj);
-
-
-									
-
-								
-					     },
-				              error: function (error) {
-				                  console.log(error);
-				              }
-		 		});
-
-
-
-
-
-
-    function append_data(obj)
+	function append_data(obj)
     {
-
-    	$("#panel-container").empty();
-
+		$("#panel-container").empty();
 		for(var i=0;i<obj.length;i++)
 	 		{
 
 	 			$("#panel-container").
-	 			append('<div class="row row-content col-lg-5" style = " margin-top:15px;" id = "row_content">' + 
-
-				         '<div class="col-xs-12 col-sm-9 col-sm-push-3" style="margin-top:4%;">' +
-				            
-				            '<div>'+  obj[i]['name']  + '<span class = "pull-right color_sh"  style = "background:'+ obj[i]["color"] +'"> </span>' + ' </div>'+
-				            '<div>Quantity : ' + obj[i]['quantity'] + '</div>'+
-
-				            '<div style = "">  ' + '<i class="fa fa-usd" aria-hidden="true"></i> ' +'<span>' +'<i class="fa fa-inr" aria-hidden="true"></i>' + obj[i]['price'] + '</span>' +
-
-				            	  '<span style ="margin-left:10%;"> |     '+ obj[i]['rating'] +' </span>'+'<span  class="stars">'+obj[i]['rating']+'</span>' + 
-
-
-				            '</div>' +
-
-				            '<div>'+ '<i class="fa fa-tags" aria-hidden="true"></i> '+ '<span>' + obj[i]['tags'] + '</span>' +'</div>'+
-				            '<div>' + '<p>'+ obj[i]['description']+'</p>' +'</div>'+
-				         '</div>'+
-
-				         '<div class="col-xs-12 col-sm-3 col-sm-pull-9" style = "padding: 2px;margin-top: 15px;">'+
-				            '<div class="media">'+
-				                    '<div class="media-left media-middle">'+
-				                        '<a href="#">'+
-				                        '<img class="media-object img-thumbnail" src="'+ obj[i]["image"] +'" >'+
-				                        '</a>' +
-				                    '</div>'+
-				                    '<div class="media-body">'+
-
-				                       
-				                    '</div>'+
-				            '</div>' +
+	 			append('<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row_content">' +
+	 					 '<div class="col-lg-2 col-md-2 col-sm-2 col-xs-3" style = "margin-top: 4%;">'+
+		                        '<a href="#">'+
+		           					'<img class="img-responsive" src="'+ obj[i]["image"] +'" >'+
+		                        '</a>' +
 				         '</div>' +
-				      '</div>');
+				         '<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="margin-top:4%;">' +				     
+					            '<div>'
+					            	+ obj[i]['name']+ 
+				            	'<span class = "pull-right color_sh"  style = "background:'+ obj[i]["color"] +'"> </span>' + 
+			            		'</div>'+
+					            '<div>'
+					            			 + 'Quantity : ' + obj[i]['quantity'] + 
+					           	'</div>'+
+					            '<div style = "border:0px solid black;">  ' + 
+					            	'<i class="fa fa-usd" aria-hidden="true"></i> ' +
+					            	'<span>' +'<i class="fa fa-inr" aria-hidden="true"></i>' + obj[i]['price'] + '</span>' +
 
+					            	'<span style ="margin-left:10%;"> |         	'+ obj[i]['rating'] +' </span>'+
 
+					            	'<span  class="stars">'+obj[i]['rating']+'</span>' + 
+								
+								'</div>'+
+					            '<div>'+ 
+					            		'<i class="fa fa-tags" aria-hidden="true"></i> '+ 
+					            		'<span>' + obj[i]['tags'] + '</span>' 
+					            +'</div>'+		            
+					             '<div>' + 
+					            		'<p>'+ obj[i]['description']+'</p>' +
+					             '</div>'+
+			         	  '</div>'+
+				        '</div>'
+				      );
 	 		}
-
-	 		// setTimeout(function(){  }, 200);
 	 		get_stars();
     } 
 
@@ -155,76 +128,51 @@ function get_stars() {
 
 function sort_rating(local_data)
 	{
-		// $("#panel-container").empty();
-
 		var byrating = local_data.slice(0);
 		 byrating.sort(function(a,b) {
 		    return a.rating - b.rating;
 		});
-
 		 append_data(byrating);
-
 		 console.log($("#amount").val());
-
 	}
-
-
-
 
 function sort_price(data)
 	{
-		// $("#panel-container").empty();
-
 		var byprice = data.slice(0);
 		 byprice.sort(function(a,b) {
 		    return a.price - b.price;
 		});
 		 append_data(byprice);
-
-		
-
-
 	}
 
-   function search_by_tags(obj)
+function search_by_tags(obj)
+{
+ 	var value = $("#search_bar").val();
+ 	var count = 0;
+ 	var store = 0
+ 	var modified_obj = [];
+ 	for(i=0;i<obj.length;i++)
 	{
-	 	var value = $("#search_bar").val();
-	 	var count = 0;
-	 	var store = 0
-	 	var modified_obj = [];
-
-	 	for(i=0;i<obj.length;i++)
-		{
-				if(obj[i]['tags'] == value)
-				{
-					modified_obj.push(obj[i]);
-				}
-
-		}
-			append_data(modified_obj);
-
+			if(obj[i]['tags'] == value)
+			{
+				modified_obj.push(obj[i]);
+			}
 	}
-
-
-	function price_range(obj,range_1,range_2){
-		console.log('i am in !!')
-		var modified_obj = [];
-
-	 	for(i=0;i<obj.length;i++)
-		{
-				// console.log(obj[i]['price'] >= range_1);
-
-				if(parseFloat(obj[i]['price']) >= range_1 && parseFloat(obj[i]['price']) <= range_2 )
-				{
-					modified_obj.push(obj[i]);
-				}
-
-		}
-
 		append_data(modified_obj);
+}
 
 
+function price_range(obj,range_1,range_2){
+	var modified_obj = [];
+ 	for(i=0;i<obj.length;i++)
+	{
+		if(parseFloat(obj[i]['price']) >= range_1 && parseFloat(obj[i]['price']) <= range_2 )
+		{
+			modified_obj.push(obj[i]);
+		}
 	}
+	append_data(modified_obj);
+}
 
 	function slider_get_set(obj) {
 

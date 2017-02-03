@@ -15,67 +15,85 @@
   
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-	<script src="bower_components/jquery-ui/jquery-ui.js"></script>
+  <script src="bower_components/jquery-ui/jquery-ui.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="css/ui.css">
-<!-- slider_purpose ! -->
-	<!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
-<!--  -->
+  <link rel="stylesheet" type="text/css" href="css/ui.css">
+
 </head>
-<body>		
-		<nav class="navbar navbar-inverse">
-			  <div class="container-fluid ">
-			    <div class="navbar-header">
-			      <a class="navbar-brand" id = "reload_it" href="#" >Fusion Style !</a>
+<body>	
 
-			    </div>
-			   
+	<nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>                        
+            </button>
 
-			    <form class="form-inline pull-right">
-			    	<input class="form-control" type="text" placeholder="Search (by category)" id = "search_bar" autocomplete="">
-			    	<button class="btn btn-outline-success" id = "search_btn" type="button">Search</button>
-			    </form>
-			    <div style="display:inline-block;" class="pull-right">
+            <a class="navbar-brand" href="#">
+                  <i class="fa fa-apple" style="color:#5bdb48" aria-hidden="true"></i>
+            </a>
 
-			   			<label for="range" style="color:white;">Enter Range:</label>
-					    <input  id = "range_1" class="my_class">
-					    <span style="color:white;">--</span>
-					    <input  id = "range_2" class="my_class">
-					    <button class="btn btn-primary " style = "vertical-align:top;" type="button" id = "search_btn_2">Search</button>
-					    <button  type="button" style = "vertical-align:top;margin-right:5px;" class="btn btn-primary pull-right" id="sort_rating">Sort by Rating</button>
-				      	<button  type="button" style = "vertical-align:top;margin-right:5px;" class="btn btn-primary pull-right" id="sort_price">Sort by Price</button>
-  				</div>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+          </div>
+        </div>
+      </nav>
 
 
-  			</div>
-		</nav>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-top">
 
-		<div class="row col-lg-12">
-		  <div class="col-sm-6 col-sm-offset-1">
-		    <div class="card card-block">
-			  
-					<div>
-					  		<label for="amount" style="color:white;">Price range:</label>
-					  		<input type="text" id="amount" readonly class = "range_1" style="border:0; color:black; font-weight:bold;">
-			      	  		
-					</div>
-					 
-					<div id="slider-range"></div>
+		<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 xyz">
 
-		    </div>
-		  </div>
+		
+
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 xyz">
+
+		<div class="col-lg-12 margin-top ">
+		 	<button  type="button" class="btn btn-primary width" id="sort_rating">Sort by Rating</button>
+
+		 	<button  type="button" class="btn btn-primary width margin-top" id="sort_price" >Sort by Price</button>
+		</div>
+
 		</div>
 
 
-			<div class="container  col-lg-12" id="panel-container">
-				
 
-		    </div>  
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 xyz margin-top " >
+		<div class="col-lg-8 margin-top">
+				<input class="form-control" type="text" placeholder="" id = "search_bar" autocomplete="">
+		</div>
+		<div class="col-lg-4 margin-top" style="padding-right:0px;">
+	    	<button class="btn btn-primary" id = "search_btn" type="button">Search</button>
+		</div>
+		</div>
+
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  margin-top">
+			<label for="range" class="white">Enter Range:</label>
+			<input  id = "range_1" class="form-control">
+			<input  id = "range_2" class="form-control margin-top">
+			<button class="btn btn-primary width margin-top" type="button" id = "search_btn_2">Search</button>
+		</div>
 
 
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  margin-top">
+			<label for="amount" class="white">Price range:</label>
+			<input type="text" id="amount" readonly class = "form-control">
+		</div>
 
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  margin-top">
+			 <div id="slider-range"></div>
+		</div>
+
+	
+		</div>
+
+			<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" id="panel-container">
+			
+			</div>
+		</div>
+		
 </body>
 
  <script src="js/script.js"></script>
