@@ -39,22 +39,22 @@ $( document ).ready(function() {
 		
 			$("#sort_rating").click(function()
 		      {
-	      		sort_rating(new_obj);
+	      		function_object.sort_rating(new_obj);
 		      });
 
 		    $("#sort_price").click(function()
 		      {
-	      		sort_price(new_obj);
+	      		function_object.sort_price(new_obj);
 		      });
 
 	      	$("#search_btn").on("click", function(){
-			   	search_by_tags(new_obj);
+			   	function_object.search_by_tags(new_obj);
 			});
 
 			$("#search_btn_2").on("click", function(){
 				var range_1 = $("#range_1").val();
 				var range_2 = $("#range_2").val();
-			   	price_range(new_obj,range_1,range_2);
+			   	function_object.price_range(new_obj,range_1,range_2);
 			});
 
 			slider_get_set(new_obj);
@@ -106,13 +106,15 @@ $( document ).ready(function() {
 				        '</div>'
 				      );
 	 		}
-	 		get_stars();
+	 		function_object.get_stars();
     } 
 
 
-function get_stars() {
+var function_object = {
 
-    return $(".stars").each(function() {
+	get_stars:function () {
+
+		return $(".stars").each(function() {
         // Get the value
         var val = parseFloat($(this).html());
         // Make sure that the value is in 0 - 5 range, multiply to get width
@@ -124,106 +126,90 @@ function get_stars() {
         // Replace the numerical value with stars
         $(this).html(span);
     });
-}
+		
+	},
 
-function sort_rating(local_data)
-	{
+	sort_rating:function (local_data) {
 		var byrating = local_data.slice(0);
 		 byrating.sort(function(a,b) {
 		    return a.rating - b.rating;
 		});
 		 append_data(byrating);
 		 console.log($("#amount").val());
-	}
+	},
 
-function sort_price(data)
-	{
+	sort_price:function (data) {
 		var byprice = data.slice(0);
 		 byprice.sort(function(a,b) {
 		    return a.price - b.price;
 		});
 		 append_data(byprice);
-	}
-
-function search_by_tags(obj)
-{
- 	var value = $("#search_bar").val();
- 	var count = 0;
- 	var store = 0
- 	var modified_obj = [];
- 	for(i=0;i<obj.length;i++)
-	{
-			if(obj[i]['tags'] == value)
+	},
+	search_by_tags:function (obj) {
+		var value = $("#search_bar").val();
+	 	var count = 0;
+	 	var store = 0
+	 	var modified_obj = [];
+	 	for(i=0;i<obj.length;i++)
+		{
+				if(obj[i]['tags'] == value)
+				{
+					modified_obj.push(obj[i]);
+				}
+		}
+		append_data(modified_obj);
+	},
+	price_range:function (obj,range_1,range_2) {
+		var modified_obj = [];
+	 	for(i=0;i<obj.length;i++)
+		{
+			if(parseFloat(obj[i]['price']) >= range_1 && parseFloat(obj[i]['price']) <= range_2 )
 			{
 				modified_obj.push(obj[i]);
 			}
-	}
+		}
 		append_data(modified_obj);
-}
-
-
-function price_range(obj,range_1,range_2){
-	var modified_obj = [];
- 	for(i=0;i<obj.length;i++)
-	{
-		if(parseFloat(obj[i]['price']) >= range_1 && parseFloat(obj[i]['price']) <= range_2 )
-		{
-			modified_obj.push(obj[i]);
-		}
 	}
-	append_data(modified_obj);
-}
 
-	function slider_get_set(obj) {
 
-		var minimum = parseFloat(obj[0]['price']);
-		var maximum = 0;
+};
 
-		for(i=0;i<obj.length;i++)
-		{
-				if(parseFloat(obj[i]['price']) > maximum)
-				{
-					maximum = parseFloat(obj[i]['price']);
-				}
-				if(parseFloat(obj[i]['price']) < minimum )
-				{
-					minimum = parseFloat(obj[i]['price']);
-				}
+function slider_get_set(obj) {
 
-		}
+	var minimum = parseFloat(obj[0]['price']);
+	var maximum = 0;
 
-		 $( function() {
+	for(i=0;i<obj.length;i++)
+	{
+			if(parseFloat(obj[i]['price']) > maximum)
+			{
+				maximum = parseFloat(obj[i]['price']);
+			}
+			if(parseFloat(obj[i]['price']) < minimum )
+			{
+				minimum = parseFloat(obj[i]['price']);
+			}
+	}
 
-		    $( "#slider-range" ).slider({
-		      range: true,
-		      max: maximum,
-		      min: minimum,
-		      values: [ minimum, maximum ],
-		      slide: function( event, ui ) {
-		        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+	$( function() {
 
-		        // console.log(ui.values[ 0 ],ui.values[ 1 ]);
-		        price_range(obj,ui.values[ 0 ],ui.values[ 1 ]);
-
-		      }
-
-		    });
-
+	    $( "#slider-range" ).slider({
+	      range: true,
+	      max: maximum,
+	      min: minimum,
+	      values: [ minimum, maximum ],
+	      slide: function( event, ui ) {
+	        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+	        function_object.price_range(obj,ui.values[ 0 ],ui.values[ 1 ]);
+	      }
+	    });
 		    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
 		      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-
-
-
-		  } );
+	  } );
 	}
-
-
-
-	
-		$("#reload_it").on("click", function(){
-
-   		location.reload();
-	
+		
+	$(".reload_it").on("click", function(){
+   		location.reload();	
 	});
 
 });
