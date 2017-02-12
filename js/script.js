@@ -2,7 +2,7 @@
 
 $( document ).ready(function() {
     
-    var query_url = "http://hackerearth.0x10.info/api/fashion?type=json&query=list_products";
+    var query_url = "https://hackerearth.0x10.info/api/fashion?type=json&query=list_products";
 	$.ajax(
 
 	{
