@@ -1,6 +1,6 @@
 ## Demo 
 
-> [Live Demo Here !](https://myshoppingappprototype.herokuapp.com/)
+> [Live Demo Here !](https://divyanshu-rawat.github.io/Shopping-cart-application/)
 
 ##
 
