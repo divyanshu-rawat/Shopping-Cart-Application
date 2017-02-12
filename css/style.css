@@ -1,0 +1,70 @@
+.container-fluid
+{
+	margin-top: 5px;
+}
+
+span.stars, span.stars span {
+    display: inline-block;
+    background: url('../extra/stars.png') 0 -16px repeat-x;
+    width: 80px;
+    height: 16px;
+}
+
+span.stars span {
+    background-position: 0 0;
+}
+
+a
+{
+	cursor: pointer;
+}
+
+.xyz
+{
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+
+
+.margin-top
+{
+    margin-top: 10px;
+}
+
+li{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.row_content
+{
+	color:black;
+	font-family:cursive !important; 
+	margin-top:10px;
+	font-weight: bold;
+	background-color: white;
+	border-radius:5px;
+	height: 240px;
+}
+
+
+.color_sh
+{
+	width: 25px;
+	height: 25px;
+}
+
+.white
+{
+    color: white;
+}
+.width
+{
+    width: 100%;
+}
+
+body
+{
+	background: black;
+}
+
