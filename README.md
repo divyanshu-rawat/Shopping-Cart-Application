@@ -13,7 +13,7 @@ A shopping cart Application.
 
 ##
 
-### Live Application Back-End API 
+### Live Application
 
 [![Live Demo Here](https://img.shields.io/badge/website-up-orange.svg)](https://divyanshu-rawat.github.io/Shopping-Cart-Application/)
 
